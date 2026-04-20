@@ -33,25 +33,29 @@ const Books = () => {
 
   return (
     <div>
-      <h1>Welcomt to MultiCloud with DevSecOps Training by VEERA Nareshit 6 months </h1>
+      <h1>Welcome to MultiCloud with DevSecOps Training by AkbarMohammad </h1>
       <div className="books">
-        {books.map((book) => (
-          <div key={book.id} className="book">
-            <img src={book.cover} alt="" />
-            <h2>{book.title}</h2>
-            <p>{book.desc}</p>
-            <span>${book.price}</span>
-            <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
-            <button className="update">
-              <Link
-                to={`/update/${book.id}`}
-                style={{ color: "inherit", textDecoration: "none" }}
-              >
-                Update
-              </Link>
-            </button>
-          </div>
-        ))}
+       {Array.isArray(books) ? (
+  books.map((book) => (
+    <div key={book.id} className="book">
+      <img src={book.cover} alt="" />
+      <h2>{book.title}</h2>
+      <p>{book.desc}</p>
+      <span>${book.price}</span>
+      <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
+      <button className="update">
+        <Link
+          to={`/update/${book.id}`}
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          Update
+        </Link>
+      </button>
+    </div>
+  ))
+) : (
+  <p>Failed to load books</p>
+)}
       </div>
 
       <button className="addHome">
