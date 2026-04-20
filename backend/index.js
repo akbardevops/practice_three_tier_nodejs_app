@@ -12,10 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('common'));
 const db = mysql.createConnection({
-  host: process.env.DB_HOST ,
+  host: process.env.DB_HOST,
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  port: process.env.PORT,
+  port: process.env.DB_PORT,
   database: "test",
 });
 
@@ -77,6 +77,6 @@ app.put("/books/:id", (req, res) => {
   });
 });
 
-app.listen(80, () => {
+app.listen(3000, "0.0.0.0", () => {
   console.log("Connected to backend.");
 });
